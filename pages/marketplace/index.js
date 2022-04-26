@@ -10,7 +10,7 @@ import {MarketHeader} from "@components/ui/marketplace";
 export default function Marketplace({courses}) {
     const [selectedCourse, setSelectedCourse] = useState(null);
     const {canPurchaseCourse} = useWalletInfo();
-
+//
     return (
         <>
             <div className={'py-4'}>
