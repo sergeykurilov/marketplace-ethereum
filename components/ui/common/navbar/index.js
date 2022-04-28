@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {useWeb3} from "@components/providers";
-import {Button} from "@components/ui/common";
+import {ActiveLink, Button} from "@components/ui/common";
 
 import {useRouter} from "next/router";
 import {useAccount} from "@components/hooks/web3";
@@ -16,17 +16,17 @@ export default function Navbar() {
                 <nav className="relative" aria-label="Global">
                     <div className="flex justify-between items-center">
                         <div>
-                            <Link href="/pages"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Product</a></Link>
-                            <Link href="/marketplace"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Marketplace</a></Link>
-                            <Link href="/pages"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Blogs</a></Link>
+                            <ActiveLink activeLinkClass={'text-indigo-500'} href="/"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Home</a></ActiveLink>
+                            <ActiveLink activeLinkClass={'text-indigo-500'} href="/marketplace"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Marketplace</a></ActiveLink>
+                            <ActiveLink activeLinkClass={'text-indigo-500'} href="/blogs"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Blogs</a></ActiveLink>
                         </div>
                         <div>
-                            <Link href="/pages" >
+                            <ActiveLink activeLinkClass={'text-indigo-500'} href="/wishlist" >
                                 <a
                                     className="font-medium mr-8 text-gray-500 hover:text-gray-900">
                                     Wishlist
                                 </a>
-                            </Link>
+                            </ActiveLink>
                             { isLoading ?
                                 <Button
                                     disabled={true}
