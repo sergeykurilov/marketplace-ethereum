@@ -40,7 +40,7 @@ export default function EthRates() {
                                     src={'/small-eth.webp'}
                                 />
                                 <span className={'text-2xl font-bold'}>
-                                    = ${COURSE_PRICE}$
+                                    = {COURSE_PRICE}$
                                 </span>
                             </> : <div className={'w-full flex justify-center'}>
                                 <Loader size='md' />
