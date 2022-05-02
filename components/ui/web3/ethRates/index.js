@@ -6,10 +6,9 @@ export default function EthRates() {
     const {eth} = useEthPrice();
 
     return (
-        <div className="grid grid-cols-4">
-            <div className="flex flex-1 items-stretch text-center">
-                <div className="p-10 border drop-shadow rounded-md">
-                    <div className={'flex items-center'}>
+        <div className="flex flex-col xs:flex-row text-center">
+                <div className="p-6 border drop-shadow rounded-md mr-2">
+                    <div className={'flex items-center justify-center'}>
                         {eth.data ?
                             <>
                                 <Image
@@ -18,19 +17,18 @@ export default function EthRates() {
                                     width={'35'}
                                     src={'/small-eth.webp'}
                                 />
-                                <span className="text-2xl font-bold"> = {eth.data}$</span>
+                                <span className="text-xl font-bold"> = {eth.data}$</span>
                             </>
                             : <div className={'w-full flex justify-center'}>
                                 <Loader size='md' />
                             </div>}
                     </div>
-                    <p className="text-xl text-gray-500">Current eth Price</p>
+                    <p className="text-lg text-gray-500">Current eth Price</p>
                 </div>
-            </div>
-            <div className="flex flex-1 items-stretch text-center">
-                <div className="p-10 border drop-shadow rounded-md">
-                    <div className={'flex items-center'}>
-                        <span className="text-2xl font-bold">
+
+                <div className="p-6 border drop-shadow rounded-md">
+                    <div className={'flex items-center justify-center'}>
+                        <span className="text-xl font-bold">
                             {eth.perItem}
                             {eth.data ? <>
                                 <Image
@@ -47,9 +45,8 @@ export default function EthRates() {
                             </div>}
                         </span>
                     </div>
-                    <p className="text-xl text-gray-500">Price per course</p>
+                    <p className="text-lg text-gray-500">Price per course</p>
                 </div>
-            </div>
         </div>
     )
 }

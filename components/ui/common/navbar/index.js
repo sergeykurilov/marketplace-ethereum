@@ -14,16 +14,16 @@ export default function Navbar() {
         <section>
             <div className="relative pt-6 px-4 sm:px-6 lg:px-8">
                 <nav className="relative" aria-label="Global">
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col xs:flex-row justify-between items-center">
                         <div>
                             <ActiveLink activeLinkClass={'text-indigo-500'} href="/"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Home</a></ActiveLink>
                             <ActiveLink activeLinkClass={'text-indigo-500'} href="/marketplace"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Marketplace</a></ActiveLink>
                             <ActiveLink activeLinkClass={'text-indigo-500'} href="/blogs"><a className="font-medium mr-8 text-gray-500 hover:text-gray-900">Blogs</a></ActiveLink>
                         </div>
-                        <div>
+                        <div className={'text-center'}>
                             <ActiveLink activeLinkClass={'text-indigo-500'} href="/wishlist" >
                                 <a
-                                    className="font-medium mr-8 text-gray-500 hover:text-gray-900">
+                                    className="font-medium sm:mr-8 mr-1 text-gray-500 hover:text-gray-900">
                                     Wishlist
                                 </a>
                             </ActiveLink>
