@@ -18,16 +18,15 @@ export default function ManagedCourseCard({children, course}) {
     return (
         <div className="bg-white border shadow overflow-hidden sm:rounded-lg mb-3">
             <div className="border-t border-gray-200">
-                {Object.keys(course).map((key, index) => {
-                    return (
-                        <Item
-                            key={key}
-                            title={key[0].toUpperCase() + key.slice(1)}
-                            value={course[key]}
-                            className={`${index % 2 ? "bg-gray-50" : "bg-white"}`}
-                        />
-                    )
-                })}
+                { Object.keys(course).map((key, i) =>
+                    <Item
+                        key={key}
+                        className={`${i % 2 ? "bg-gray-50" : "bg-white"}`}
+                        // title={key}
+                        title={key[0].toUpperCase() + key.slice(1)}
+                        value={course[key]}
+                    />
+                )}
                 <div className="bg-white px-4 py-5 sm:px-6">
                     {children}
                 </div>

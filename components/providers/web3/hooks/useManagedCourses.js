@@ -4,7 +4,10 @@ import {normalizeOwnedCourse} from "@utils/normalize";
 
 export const handler = (web3, contract) => account => {
     const swrRes = useSWR(() =>
-            (web3 && contract && account) ? `web3/managedCourses/${account}` : null,
+            (web3 &&
+                contract && account
+            && account.data && account.isAdmin)
+                ? `web3/managedCourses/${account.data}` : null,
         async () => {
             const courses = []
             const courseCount = await contract.methods.getCourseCount().call();
