@@ -54,19 +54,22 @@ export const useOwnedCourse = (...args) => {
 }
 
 export const useAdmin = ({redirectTo}) => {
-    const {account} = useAccount();
-    const {requireInstall} = useWeb3();
-    const router = useRouter();
-    useEffect(() => {
-        if(requireInstall
-            || (account.hasInitialResponse && !account.isAdmin)
-            || account.isEmpty) {
-            router.push(redirectTo);
-        }
-    }, [account])
-    return {
-        account
-    }
+    const { account } = useAccount()
+    const { requireInstall } = useWeb3()
+    const router = useRouter()
+    console.log(account.isAdmin)
+    // useEffect(() => {
+    //
+    //     if ((
+    //             requireInstall ||
+    //             account.hasInitialResponse && account.isAdmin === false) ||
+    //         account.isEmpty) {
+    //
+    //         router.push(redirectTo)
+    //     }
+    // }, [account, requireInstall, router, redirectTo])
+
+    return { account }
 }
 
 export const useManagedCourses = (...args) => {
