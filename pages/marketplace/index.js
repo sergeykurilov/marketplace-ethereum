@@ -9,31 +9,32 @@ import {MarketHeader} from "@components/ui/marketplace";
 import {useWeb3} from "@components/providers";
 
 export default function Marketplace({courses}) {
-    const {web3} = useWeb3();
-    const [selectedCourse, setSelectedCourse] = useState(null);
-    const {canPurchaseCourse, account} = useWalletInfo();
-    const purchaseCourse = async (order) => {
-        const hexCourseId = web3.utils.utf8ToHex(selectedCourse.id);
+    const { web3, contract } = useWeb3()
+    const { canPurchaseCourse, account } = useWalletInfo()
+    const [selectedCourse, setSelectedCourse] = useState(null)
+
+    const purchaseCourse = async order => {
+        const hexCourseId = web3.utils.utf8ToHex(selectedCourse.id)
         const orderHash = web3.utils.soliditySha3(
-            {type: "bytes16", value: hexCourseId},
-            {type: "address", value: account.data},
-        );
-        const emailHash = web3.utils.sha3(order.email);
-        const proof = web3.utils.soliditySha3(
-            {type: "bytes32", value: orderHash},
-            {type: "bytes32", value: emailHash},
+            { type: "bytes16", value: hexCourseId },
+            { type: "address", value: account.data }
         )
-        //emailHash + courseHash
-        const value = web3.utils.toWei(order.price);
+        const emailHash = web3.utils.sha3(order.email)
+        const proof = web3.utils.soliditySha3(
+            { type: "bytes32", value: emailHash },
+            { type: "bytes32", value: orderHash }
+        )
+
+        const value = web3.utils.toWei(String(order.price))
 
         try {
             const result = await contract.methods.purchaseCourse(
                 hexCourseId,
                 proof
-            ).send({from: account.data, value});
+            ).send({from: account.data, value})
             console.log(result)
         } catch {
-            console.error('Purchase course operation failed.');
+            console.error("Purchase course: Operation has failed.")
         }
     }
 
@@ -65,7 +66,7 @@ export default function Marketplace({courses}) {
     )
 }
 export function getStaticProps() {
-    const {data} = getAllCourses()
+    const { data } = getAllCourses()
     return {
         props: {
             courses: data

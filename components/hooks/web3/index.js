@@ -57,9 +57,7 @@ export const useAdmin = ({redirectTo}) => {
     const { account } = useAccount()
     const { requireInstall } = useWeb3()
     const router = useRouter()
-    console.log(account.isAdmin)
     // useEffect(() => {
-    //
     //     if ((
     //             requireInstall ||
     //             account.hasInitialResponse && account.isAdmin === false) ||

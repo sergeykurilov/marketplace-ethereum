@@ -27,9 +27,9 @@ export const handler = (web3, provider) => () => {
         return () => provider?.removeListener("accountsChanged", mutator)
     }, [provider])
 
-    if(data) {
-        console.log(web3.utils.keccak256(data))
-    }
+    // if(data) {
+    //     console.log(web3.utils.keccak256(data))
+    // }
 
     return {
             data,
